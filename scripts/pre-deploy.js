@@ -2,7 +2,6 @@ const utils = require('./utils');
 
 module.exports = function preDeploy() {
   const pkg = utils.readPackageJSON();
-  const name = utils.getSafeName(pkg.name);
 
   const modified = Object.assign({}, pkg, {
     privacy: 'unlisted'
@@ -10,20 +9,6 @@ module.exports = function preDeploy() {
 
   utils.writePackageJSON(modified);
 
-  let app = utils.readAppJSON();
-  if (app.expo) {
-    app.expo = Object.assign({}, app.expo, {
-      name,
-      slug: name,
-      privacy: 'unlisted'
-    });
-  } else {
-    app = Object.assign({}, app, {
-      name,
-      slug: name,
-      privacy: 'unlisted'
-    });
-  }
-
+  const app = utils.readAppJSON();
   utils.writeAppJSON(app);
 };

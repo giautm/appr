@@ -3,6 +3,7 @@ let config;
 const requiredEnvVars = [
   'expUsername',
   'expPassword',
+  'expReleaseChannel',
   'githubUsername',
   'githubToken',
   'githubOrg',
