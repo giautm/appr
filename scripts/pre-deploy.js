@@ -8,7 +8,4 @@ module.exports = function preDeploy() {
   });
 
   utils.writePackageJSON(modified);
-
-  const app = utils.readAppJSON();
-  utils.writeAppJSON(app);
 };
