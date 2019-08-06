@@ -1,35 +1,35 @@
-const fs = require('fs');
-const config = require('./config');
+const fs = require("fs");
+const config = require("./config");
 
 function getSafeName(name) {
-  return `${name}`.replace(/[^a-zA-Z0-9\\-]/, '-');
+	return `${name}`.replace(/[^a-zA-Z0-9\\\/-]/, "-");
 }
 
 function getExpChannelName() {
-  return getSafeName(config.expReleaseChannel);
+	return getSafeName(config.expReleaseChannel);
 }
 
 function readPackageJSON() {
-  return JSON.parse(fs.readFileSync('./package.json'));
+	return JSON.parse(fs.readFileSync("./package.json"));
 }
 
 function writePackageJSON(content) {
-  fs.writeFileSync('./package.json', JSON.stringify(content, null, 2));
+	fs.writeFileSync("./package.json", JSON.stringify(content, null, 2));
 }
 
 function readAppJSON() {
-  return JSON.parse(fs.readFileSync('./app.json'));
+	return JSON.parse(fs.readFileSync("./app.json"));
 }
 
 function writeAppJSON(content) {
-  fs.writeFileSync('./app.json', JSON.stringify(content, null, 2));
+	fs.writeFileSync("./app.json", JSON.stringify(content, null, 2));
 }
 
 module.exports = {
-  getSafeName,
-  getExpChannelName,
-  readPackageJSON,
-  writePackageJSON,
-  readAppJSON,
-  writeAppJSON
+	getSafeName,
+	getExpChannelName,
+	readPackageJSON,
+	writePackageJSON,
+	readAppJSON,
+	writeAppJSON
 };
